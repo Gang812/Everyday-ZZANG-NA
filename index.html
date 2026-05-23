@@ -11,30 +11,34 @@
 </head>
 <body class="bg-[#fcfcfc] text-[#1a1a1a] font-sans antialiased min-h-screen flex flex-col justify-between">
 
-    <!-- 상단 바 (현재 시간 표시) -->
+    <!-- 상단 바 (현재 시간 및 요일 표시) -->
     <header class="border-b border-gray-100 px-6 py-4 flex justify-between items-center bg-white">
         <div class="flex items-center gap-2">
             <div class="w-2.5 h-2.5 rounded-full bg-[#1e3f20] animate-pulse"></div>
-            <span class="text-xs uppercase tracking-widest font-bold text-gray-500">Sweet Home Status</span>
+            <span class="text-xs uppercase tracking-widest font-bold text-gray-500" id="mansion-loc">Seoul Luxury Mansion</span>
         </div>
-        <div class="text-sm font-mono font-medium text-gray-600" id="current-time">00:00:00</div>
+        <div class="flex items-center gap-4 text-sm font-mono font-medium text-gray-600">
+            <span id="current-day" class="text-xs bg-gray-100 px-2 py-0.5 rounded text-gray-500 font-sans">화요일</span>
+            <span id="current-time">00:00:00</span>
+        </div>
     </header>
 
     <!-- 메인 상태창 섹션 -->
     <main class="max-w-5xl w-full mx-auto p-6 my-auto grid md:grid-cols-2 gap-8">
         
-        <!-- 캐릭터 1: 강창호 (딥 그린 & 퍼플 조합) -->
-        <div class="bg-[#f4f7f4] border border-emerald-100 rounded-2xl p-8 shadow-xs flex flex-col justify-between min-h-[340px] transition-all hover:border-purple-300">
+        <!-- 캐릭터 1: 강창호 (신체강화술사 / S급 헌터) -->
+        <div class="bg-[#f4f7f4] border border-emerald-100 rounded-2xl p-8 shadow-xs flex flex-col justify-between min-h-[380px] transition-all hover:border-emerald-500">
             <div>
                 <div class="flex justify-between items-start mb-6">
                     <div>
                         <h2 class="text-2xl font-bold tracking-tight text-[#1e3f20]">강창호</h2>
+                        <p class="text-xs text-gray-400 mt-1">S-Class Body Amplification Mage</p>
                     </div>
-                    <span class="bg-[#7c3aed] text-white text-xs px-3 py-1 rounded-full font-medium" id="char1-tag">상태</span>
+                    <span class="bg-[#1e3f20] text-white text-xs px-3 py-1 rounded-full font-medium" id="char1-tag">상태</span>
                 </div>
                 
                 <!-- 현재 행동 문구 -->
-                <p class="text-lg text-gray-800 font-medium leading-relaxed" id="char1-action">
+                <p class="text-lg text-gray-800 font-medium leading-relaxed whitespace-pre-line" id="char1-action">
                     상태를 불러오는 중입니다...
                 </p>
             </div>
@@ -42,38 +46,45 @@
             <!-- 하단 타임스탬프와 아이콘 -->
             <div class="border-t border-emerald-200/50 pt-4 mt-6 flex justify-between items-center text-xs text-emerald-700 font-mono">
                 <span id="char1-time">00:00 - 00:59</span>
-                <i data-lucide="shield" class="w-4 h-4 text-purple-600"></i>
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] bg-emerald-100 px-1.5 py-0.5 rounded text-emerald-800 font-sans">192cm / 신체강화</span>
+                    <i data-lucide="shield" class="w-4 h-4 text-emerald-700"></i>
+                </div>
             </div>
         </div>
 
-        <!-- 캐릭터 2: 나결 (회색 & 검정 조합) -->
-        <div class="bg-[#f5f5f5] border border-gray-200 rounded-2xl p-8 shadow-xs flex flex-col justify-between min-h-[340px] transition-all hover:border-black">
+        <!-- 캐릭터 2: 나결 (독술사 / 염동력 / 치유) -->
+        <div class="bg-[#fff5f5] border border-rose-100 rounded-2xl p-8 shadow-xs flex flex-col justify-between min-h-[380px] transition-all hover:border-rose-400">
             <div>
                 <div class="flex justify-between items-start mb-6">
                     <div>
-                        <h2 class="text-2xl font-bold tracking-tight text-gray-900">나결</h2>
+                        <h2 class="text-2xl font-bold tracking-tight text-rose-900">나결</h2>
+                        <p class="text-xs text-gray-400 mt-1">A-Class Poison & Psychokinesis</p>
                     </div>
-                    <span class="bg-black text-white text-xs px-3 py-1 rounded-full font-medium" id="char2-tag">상태</span>
+                    <span class="bg-rose-700 text-white text-xs px-3 py-1 rounded-full font-medium" id="char2-tag">상태</span>
                 </div>
                 
                 <!-- 현재 행동 문구 -->
-                <p class="text-lg text-gray-800 font-medium leading-relaxed" id="char2-action">
+                <p class="text-lg text-gray-800 font-medium leading-relaxed whitespace-pre-line" id="char2-action">
                     상태를 불러오는 중입니다...
                 </p>
             </div>
 
             <!-- 하단 타임스탬프와 아이콘 -->
-            <div class="border-t border-gray-200 pt-4 mt-6 flex justify-between items-center text-xs text-gray-500 font-mono">
+            <div class="border-t border-rose-100 pt-4 mt-6 flex justify-between items-center text-xs text-rose-700 font-mono">
                 <span id="char2-time">00:00 - 00:59</span>
-                <i data-lucide="moon" class="w-4 h-4 text-black"></i>
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] bg-rose-100 px-1.5 py-0.5 rounded text-rose-800 font-sans">169cm / 염동력</span>
+                    <i data-lucide="sparkles" class="w-4 h-4 text-rose-600"></i>
+                </div>
             </div>
         </div>
 
     </main>
 
-    <!-- 하단 푸터 (새로고침 버튼 포함) -->
+    <!-- 하단 푸터 -->
     <footer class="border-t border-gray-100 px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4 bg-white text-xs text-gray-400">
-        <div>© 2026 EVERYDAY ZZANG-NA. Built with Vibe Coding.</div>
+        <div>© 2026 EVERYDAY ZZANG-NA. Artifact & Hunting Vibe.</div>
         <button onclick="updateCharacters()" class="flex items-center gap-1.5 px-3 py-1.5 border border-gray-200 rounded-md hover:bg-gray-50 hover:text-gray-700 transition-colors cursor-pointer">
             <i data-lucide="refresh-cw" class="w-3 h-3"></i>
             <span>상태 강제 새로고침</span>
@@ -82,156 +93,218 @@
 
     <!-- 자바스크립트 로직 -->
     <script>
-        // 강창호 호칭 리스트에서 '결아' 제외
-        const changhoCall = ["나결", "나결 씨", "여보", "자기", "마누라"];
-        const gyeolCall = ["강 헌터", "강창호", "강창호 헌터", "여보", "자기"];
+        const dayNames = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
 
-        function getCall(arr) {
-            return arr[Math.floor(Math.random() * arr.length)];
-        }
+        // 설정 반영 마스터 데이터 스페이스
+        const db = {
+            // 1. 취침 (공통) - 서울 호화 저택, 창호 방 사용
+            sleeping: [
+                "서울 한복판, 고요함이 흐르는 호화 저택의 가장 깊숙한 마스터 베드룸. 두 사람은 저택 내 수많은 방을 뒤로하고, 안 쓴 지 오래되어 먼지만 쌓인 결의 방 대신 창호의 방 침대에서 체온을 나누며 깊은 잠에 빠져 있다. 거구의 신체강화술사인 창호의 마력 수치가 결의 규칙적인 숨소리에 맞춰 안정적으로 회복된다.",
+                "방어 결계가 겹겹이 둘러쳐진 창호의 방에서 부부가 나란히 수면 중이다. 호화 저택 외부의 마력 파동은 완벽히 차단되어 있으며, 창호는 잠결에도 아내가 추울세라 넓은 품으로 결을 감싸 안아 체온을 나눠준다. 오래전 던전에서 오른팔을 잃고 통증을 앓던 결도 창호의 곁에서는 미동도 없이 편안히 잠들어 있다.",
+                "넓은 저택의 주인이 가만히 숨을 고르는 시간. 결의 독방은 이미 창고나 다름없어진 지 오래, 창호의 방 넓은 침대에서 두 사람은 서로를 꼭 안은 채 자고 있다. 창호의 단단하고 굵은 팔이 마른 몸의 결을 부드럽게 감싸 쥐고 있으며, 결은 마력 소모가 전혀 없는 완벽한 휴식을 즐긴다."
+            ],
 
-        const characterData = {
-            changho: {
-                sleeping: [
-                    "아내의 숨소리를 들으며 깊은 잠에 빠져 있습니다. 마력 수치가 안정적으로 회복되는 중입니다.",
-                    "침대 깊숙이 파묻혀 곤히 자고 있습니다. 가끔 아내 쪽으로 이불을 더 끌어다 덮어줍니다.",
-                    "평화로운 얼굴로 수면 중입니다. 집 안 전체에 쳐둔 방어 결계 덕에 그 어떤 S급 헌터보다 편안한 밤입니다."
+            // 2. 꿈 이야기 (공통 - 반말 수정)
+            dreamTalk: {
+                changho: [
+                    () => `잠에서 깨어나 결을 품에 안고 낮게 속삭인다. "여보, 나 꿈에서 지난번 게이트 클리어하고 드롭된 아티팩트의 마력 회로를 완전히 새로 정렬하는 꿈을 꿨어. 구조가 너무 생생해서 눈뜨자마자 비밀 연구실로 가고 싶어졌어."`,
+                    () => `부스스한 머리로 눈을 뜨자마자 옆자리에 누워있는 아내의 뺨을 만지며 말한다. "결아, 나 꿈에서 거대한 S급 게이트가 터졌는데 보스가 엄청나게 큰 하얀 고양이더라. 내 주먹도 안 통할 만큼 푹신하길래 그냥 실컷 쓰다듬어 주다가 잠에서 깼어."`,
+                    () => `결을 바라보며 부드럽게 미소 짓는다. "어젯밤 꿈에 예전 뒷세계의 골치 아픈 녀석들이 나왔거든? 그런데 당신이 한 손이 없어도 염동력으로 단검 수십 개를 날려서 내 뒤를 다 지켜주더라. 꿈인데도 역시 최고였어."`
                 ],
-                dreamTalk: [
-                    () => `눈을 비비며 일어나 옆에 있는 아내를 껴안고 어젯밤 꿈 이야기를 합니다. "내가 꿈에서 특이한 기계를 만지는 꿈을 꿨는데 말이야, ${getCall(changhoCall)}... 진짜 생생했어."`,
-                    () => `잠에서 깨자마자 옆자리의 아내에게 말을 건넵니다. "${getCall(changhoCall)}, 나 꿈에서 게이트 보스로 거대 고양이가 나오는 꿈 꿨어. 너무 귀엽더라."`,
-                    () => `아내를 보며 부스스한 머리로 웃습니다. "${getCall(changhoCall)} 씨, 꿈에서 우리 둘이 아주 한적한 시골로 여행 가는 꿈을 꿨어요. 기분 좋네."`
-                ],
-                morning: [
-                    () => `부엌에서 정성스럽게 핸드드립 커피를 내리고 있습니다. 진하게 퍼지는 향을 맡으며 아내가 깰 시간을 기다립니다.`,
-                    () => `침대 머리맡에서 태블릿을 켜고 밤새 포털 사이트에 올라온 최신 뉴스 기사들을 검색하고 있습니다. 커피를 내리기 전의 가벼운 루틴입니다.`,
-                    () => `따뜻한 아메리카노를 잔에 따르며, 오늘 점심으로 먹을 일식 레시피를 패드로 훑어보고 있습니다.`
-                ],
-                afternoon: [
-                    () => {
-                        // 일주일에 딱 한 번 (일요일 = 0) 지하실 루틴 작동
-                        const isBasementDay = new Date().getDay() === 0;
-                        if (isBasementDay) {
-                            return "지하실로 내려가 아주 오랜만에 기계를 만지고 있습니다. 일주일에 딱 한 번 있을까 말까 한 창호의 비밀스러운 정밀 조립 시간입니다.";
-                        } else {
-                            return "소파에 편하게 앉아 태블릿을 켜고 포털 사이트에 접속해 최신 뉴스를 검색하고 있습니다. 게이트 동향이나 사회 기사를 꼼꼼히 읽는 중입니다.";
-                        }
-                    },
-                    () => {
-                        const isBasementDay = new Date().getDay() === 0;
-                        if (isBasementDay) {
-                            return "지하실 작업대에서 드물게 찾아온 기계 제어 루틴을 수행 중입니다. 수석 엔지니어답게 공구들을 정교하게 다룹니다.";
-                        } else {
-                            return "거실 소파에 앉아 개인적으로 두꺼운 책을 읽으며 조용하고 여유로운 오후를 보내고 있습니다. 완벽한 은신 생활입니다.";
-                        }
-                    },
-                    () => `거실 대형 스크린으로 실시간 티비 뉴스를 시청하며 최근 헌터 연합의 동향을 조용히 분석하고 있습니다. 외부 활동 없는 평화로운 일상입니다.`,
-                    () => `아내 옆에서 개인 태블릿으로 관심 있는 분야의 최신 뉴스 기사를 검색하거나 흥미로운 칼럼을 읽으며 시간을 보내고 있습니다.`
-                ],
-                dinner: [
-                    () => `오늘 저녁은 정갈한 일식 코스입니다. 밥을 몇 숟가락 뜨지 않는 아내를 보며 걱정스레 속상해합니다. "${getCall(changhoCall)}, 한 입만 더 먹자."`,
-                    () => `정성껏 준비한 일식 돈부리를 식탁에 올립니다. 아내의 앞접시에 맛있는 부위를 골라 올려주며 흐뭇하게 바라봅니다.`,
-                    () => `식탁에 마주 앉아 초밥을 먹는 중입니다. 여러 음식을 복스럽게 먹으면서도 아내의 적은 식사량을 부지런히 챙깁니다.`
-                ],
-                night: [
-                    () => `모든 식사와 뉴스 시청을 마치고 소파에 편하게 기댔습니다. 옆에서 영화를 보는 아내의 손을 만지작거리며 따뜻한 차를 마십니다.`,
-                    () => `거실 조명을 어둡게 조절하고 아내 곁에 앉았습니다. 소파에 기대어 아내의 머리카락을 부드럽게 쓰다듬어 주며 함께 영화를 시청합니다.`,
-                    () => `아내가 고른 드라마를 함께 조용히 시청하고 있습니다. 화면 내용보다는 옆에 앉은 아내의 얼굴에 더 시선이 가는 듯합니다.`
-                ],
-                readyToSleep: [
-                    () => `아내와 함께 침대에 나란히 누웠습니다. 아내의 손을 꼭 잡고 눈을 맞추며 속삭입니다. "사랑해 ${getCall(changhoCall)}, 내 꿈꿔."`,
-                    () => `이불을 머리까지 폭 덮고 아내를 품에 안아주며 다정하게 말합니다. "오늘 하루도 수고했어, ${getCall(changhoCall)}. 사랑해. 내 꿈에서 만나."`,
-                    () => `은은한 스탠드 불빛 아래에서 아내의 이마에 살짝 입을 맞춤니다. "${getCall(changhoCall)} 씨, 많이 사랑해요. 좋은 꿈만 꿔요."`
+                gyeol: [
+                    () => `창호의 가슴에 얼굴을 묻은 채 나른하게 답한다. "진짜? 너는 꿈속에서도 마도구 타령이네... 덩치는 산만 한 게 참 정성이야." 그러고는 하나뿐인 왼손으로 창호의 단단한 어깨를 살포시 토닥인다.`,
+                    () => `하품을 작게 하며 남편의 목에 팔을 두른다. "강창호, 나는 꿈에서 아주 신선하고 도톰한 생선 회가 가득 차려진 일식집에 간 꿈을 꿨어. 일어났는데도 배가 고픈 느낌이야. 오늘 우리 외식 갈래?"`,
+                    () => `잠이 덜 깬 목소리로 창호를 올려다보며 웃는다. "난 어제 아무 꿈도 안 꿨어. 그냥 눈뜨니까 네 얼굴이 제일 먼저 보여서 좋은데. 신체강화술사라면서 꿈에서도 맨몸으로 다 부수고 다닌 건 아니겠지......."`
                 ]
             },
-            gyeol: {
-                sleeping: [
-                    "창호의 넓은 품에 안겨 세상 모르게 꿀잠을 자고 있습니다. 은퇴한 전직 A급 헌터의 가장 평화로운 시간입니다.",
-                    "침대 한가운데에서 아주 편안한 자세로 깊은 잠에 들어 있습니다. 마력 소모가 전혀 없는 완벽한 휴식입니다.",
-                    "숨소리조차 조용하게 곤히 자고 있습니다. 창호가 덮어준 이불 안이 무척 따뜻합니다."
+
+            // 3. 평화로운 오전 (독자 행동 - 염동력, 마도구 설정 반영)
+            morning: {
+                changho: [
+                    () => `넓은 저택의 고급스러운 부엌에서 원두를 갈아 핸드드립 커피를 내리고 있다. 수석 엔지니어라는 과거 신분은 결만 알고 있기에, 거실에서 휴식 중인 아내를 위해 마력 제어 계측 마도구를 몰래 정비하는 지적인 반전 모습을 보인다.`,
+                    () => `식탁에 앉아 개인 태블릿을 확인하며 헌터 협회의 동향과 전 세계 아티팩트 경매 시장의 시세를 날카로운 눈으로 분석하고 있다. 세간에는 제멋대로인 S급 신체강화술사로 통하지만, 집 안에서는 지독하게 꼼꼼한 마도구 전문가다.`,
+                    () => `따뜻한 아메리카노를 마시며 오늘 아내가 조금이라도 더 먹을 수 있도록 정갈한 일식 스타일의 점심 레시피를 패드로 정독하는 중이다.`
                 ],
-                dreamTalk: [
-                    () => `비몽사몽한 상태로 창호의 꿈 이야기를 가만히 듣고 있습니다. "진짜? ${getCall(gyeolCall)}는 꿈에서도 기계를 만지네..." 그러곤 자기가 꾼 엉뚱한 꿈을 조근조근 털어놓습니다.`,
-                    () => `하품을 작게 하며 창호의 가슴에 얼굴을 묻습니다. "${getCall(gyeolCall)}, 나는 꿈에서 엄청나게 큰 생선회를 먹는 꿈을 꿨어. 행복하더라."`,
-                    () => `눈을 깜빡이며 일어납니다. "${getCall(gyeolCall)}, 난 꿈 안 꿨는데 깨니까 앞이 보이니까 그냥 좋아."라며 창호의 뺨을 살짝 만집니다.`
-                ],
-                morning: [
-                    () => `거실 소파 한구석에 편한 자세로 웅크려 앉아 두꺼운 소설책을 읽기 시작했습니다. 전직 헌터의 완벽한 백수 모드입니다.`,
-                    () => `창호가 내리는 향긋한 커피 냄새를 맡으며 스마트폰으로 오늘 업데이트된 웹툰을 챙겨보고 있습니다.`,
-                    () => `잠을 완전히 깨기 위해 거실 창가를 멍하니 바라보며 소파에서 뒹굴거립니다. 실내의 안락함에 대만족 중입니다.`
-                ],
-                afternoon: [
-                    () => `거실 대형 스크린으로 넷플릭스 스릴러 드라마를 초집중해서 정주행하고 있습니다. 팝콘 대신 창호가 준 간식을 깨작입니다.`,
-                    () => `태블릿을 들고 침대와 소파를 오가며 밀린 영화를 보고 있습니다. 은퇴 후 이보다 더 완벽한 집콕 라이프는 없습니다.`,
-                    () => `창호가 옆에서 뉴스를 보거나 책을 읽는 동안, 그 곁에 앉아 조용히 만화책을 정주행하고 있습니다.`,
-                    () => `소파에 비스듬히 누워 이어폰을 꽂고 잔잔한 오디오북을 듣고 있습니다. 발가락을 까딱이며 나른한 오후를 보냅니다.`
-                ],
-                dinner: [
-                    () => `식탁에 마주 앉아 창호가 정성껏 썰어준 날생선(회)을 아주 맛있게 오물거리고 있습니다. 여전히 밥그릇의 밥은 거의 줄어들지 않았습니다.`,
-                    () => `창호의 걱정 가득한 시선을 받으며 회 한 점을 입에 넣습니다. "${getCall(gyeolCall)}, 나 원래 회 좋아하잖아. 밥 안 먹어도 배불러."`,
-                    () => `적은 양이지만 아주 꼭꼭 씹어 저녁을 먹습니다. 창호가 앞접시에 놓아주는 일식 반찬들을 조용히 받아먹으며 미소 짓습니다.`
-                ],
-                night: [
-                    () => `태블릿으로 흥미진진한 웹소설을 읽는 중입니다. 중간중간 옆에서 같이 화면을 보거나 쉬고 있는 창호를 힐끗 구경합니다.`,
-                    () => `창호 옆에 찰딱 붙어 앉아 휴대폰 화면을 보여주며 재밌는 짤방을 공유하고 있습니다. 거실에 두 사람의 웃음소리가 번집니다.`,
-                    () => `조용한 음악을 틀어놓고 소파에서 창호의 다리를 베개 삼아 누워 있습니다. 창호가 머리를 쓰다듬어 주자 눈을 감고 즐깁니다.`
-                ],
-                readyToSleep: [
-                    () => `창호의 품으로 깊숙이 파고들며 마주 봅니다. 창호의 가슴에 귀를 대고 속삭입니다. "나도 사랑해 ${getCall(gyeolCall)}. 내 꿈꿔."`,
-                    () => `창호의 다정한 손길을 느끼며 눈을 감습니다. "${getCall(gyeolCall)}, 나도 많이 사랑해. 꿈에서 게이트 터지면 내가 구해줄게."`,
-                    () => `창호의 고백에 배시시 웃으며 창호의 목을 부드럽게 끌어안습니다. "응, 여보도 좋은 꿈 꾸고... 잘 자."`
+                gyeol: [
+                    () => `거실 소파 한구석에 담요를 덮고 편안하게 웅크려 앉아 웹소설을 읽기 시작했다. 하나뿐인 왼손 대신 염동력을 부드럽게 사용하여 스마트폰을 허공에 띄워둔 채 화면을 넘기는 은퇴자의 평화로운 오전이다.`,
+                    () => `남편이 부엌에서 내리는 커피 향을 즐기며 태블릿으로 스릴러 영화의 리뷰들을 검색하고 있다. 오른팔이 없기에 염동력으로 컵을 스르륵 끌어당겨 따뜻한 물을 한 모금 마신다.`,
+                    () => `소파에 비스듬히 누워 스마트폰으로 신작 웹툰을 정주행하고 있다. 남편 창호가 다가와 커피를 내려놓자 베시시 미소를 지으며 왼손으로 그의 옷자락을 붙잡는다.`
                 ]
+            },
+
+            // 4. 오후 루틴 (독자 행동)
+            afternoon: {
+                changho: [
+                    () => `거실 소파에 앉아 태블릿으로 국내외 속보와 게이트 마력 파동 관련 뉴스 기사들을 연이어 검색하고 있다. 사회 분석이 사뭇 진지하다.`,
+                    () => `과거 연구 기록이 담긴 마도구 도면을 조용히 검토하며 오후를 보내고 있다. 결이 소파 쪽으로 다가오자 얼른 화면을 숨기며 아내를 향해 듬직하게 미소 짓는다.`
+                ],
+                gyeol: [
+                    () => `거실 대형 스크린에 연결된 추리 드라마를 초집중해서 정주행하고 있다. 오른손의 부재가 무색하게, 염동력으로 리모컨을 조종하며 완벽한 집콕 생활의 정점을 찍는 중이다.`,
+                    () => `태블릿을 품에 안고 침대와 거실 소파를 느긋하게 오가며 밀린 장편 영화들을 시청하고 있다. 전직 A급 치료술사의 날카로움은 온데간데없이 평화롭기만 하다.`
+                ]
+            },
+
+            // 5. 저녁 식사 (독자 행동 - 반말 수정)
+            dinner: {
+                changho: [
+                    () => `오늘 저녁은 부엌에서 직접 칼을 잡고 정갈한 일식 가정식을 요리했다. 마른 몸으로 밥을 몇 숟가락 뜨지 않는 결을 보며 걱정 가득한 눈빛을 보낸다. "결아, 한 입만 더 먹어봐. 응?"`,
+                    () => `부엌 조리대에서 정성껏 끓여낸 미소시루와 일식 돈부리를 식탁에 올린다. 아내의 앞접시에 맛있는 부위를 골라 가득 올려주며, 부지런히 결의 적은 식사량을 챙겨준다.`
+                ],
+                gyeol: [
+                    () => `식탁에 마주 앉아 창호가 정교하게 썰어준 고급 일식 회를 아주 맛있게 오물거리고 있다. 여전히 결의 밥그릇에 담긴 흰쌀밥은 거의 줄어들지 않았다.`,
+                    () => `창호의 걱정 가득한 시선을 눈치채고 회 한 점을 간장에 콕 찍어 입에 넣는다. "강창호, 나 진짜 배불러서 그래. 네가 해준 일식 회는 나쁘지 않았어."라며 희미하게 웃는다.`
+                ]
+            },
+
+            // 6. 밤 휴식 (독자 행동)
+            night: {
+                changho: [
+                    () => `거실 조명을 아늑하게 낮추고 소파에 편하게 기대어, 옆에 누운 결의 어깨와 하나뿐인 왼손을 다정하게 만지작거리며 따뜻한 홍차를 마신다. 192cm의 거구가 한없이 부드러워지는 시간이다.`,
+                    () => `결의 곁에 바짝 다가가 앉아 소파 등받이에 팔을 두르고, 아내의 흰 머리카락을 천천히 쓰다듬어 주며 거실 스크린에 흘러나오는 다큐멘터리를 시청한다.`
+                ],
+                gyeol: [
+                    () => `태블릿을 켜고 로맨스 소설을 읽는 중이다. 옆에 앉아 차를 마시는 창호의 넓고 단단한 어깨에 슬그머니 머리를 기댄 채 손가락을 까딱이며 염동력으로 찻잔을 정돈한다.`,
+                    () => `조용한 음악을 거실에 틀어놓고 소파에서 창호의 허벅지를 베개 삼아 누워 있다. 남편이 커다란 손으로 머리를 쓰다듬어 주자 눈을 감고 편안한 안도감을 느낀다.`
+                ]
+            },
+
+            // 7. 잠잘 준비 (공통 - 반말 수정)
+            readyToSleep: [
+                () => `호화 저택의 고요함 속에서 창호의 방 침대에 두 사람이 나란히 누웠다. 창호가 결의 손을 꼭 쥐고 눈을 맞추며 나직하게 고백한다. "사랑해 결아, 내 꿈꿔." 결은 그의 넓은 품으로 깊숙이 파고들며 창호의 단단한 가슴에 귀를 대고 속삭인다. "나도 사랑해, 강창호. 잘 자."`,
+                () => `이불을 머리 근처까지 폭신하게 덮고 창호가 결을 품에 꼭 안아준다. "오늘 하루도 내 곁에 있어 줘서 고마워, 나결 씨. 좋은 꿈 꾸자." 결은 그의 목을 부드럽게 끌어안으며 배시시 웃는다. "응, 너도... 꿈에서 게이트 터지면 이번엔 내가 어떻게든 구해줄게."`
+            ],
+
+            // 8. 부부 공동 행동 스크립트 (동기화 출력)
+            shared: {
+                walk: [
+                    "부부가 오랜만에 함께 외출하여 저택 근처의 한적한 산책로를 다정하게 걷고 있다. 창호는 보폭이 다른 결이 지치지 않게 걸음걸이를 완벽하게 맞추며 왼손을 꼭 잡고 있고, 결은 남편의 든든한 품 곁에서 신선한 바깥 공기를 마시며 산책을 즐긴다.",
+                    "날씨가 좋아 부부가 저택 밖으로 나와 서울 시내의 조용한 공원을 거닐고 있다. 창호는 바람이 차가울세라 결의 겉옷을 섬세하게 매만져주고, 결은 하나뿐인 왼손을 남편의 외투 주머니에 함께 찔러 넣은 채 발걸음을 옮긴다."
+                ],
+                dining: [
+                    "부부가 오랜만에 서울 강남의 최고급 일식당으로 외식을 나왔다. 창호는 결이 가장 좋아하는 신선하고 정갈한 일식 회 코스를 주문해 주었다. 평소 집에서 밥을 적게 먹던 결도 눈을 반짝이며 회를 오물거리고, 창호는 그 모습을 아주 흐뭇하게 바라보며 식사한다.",
+                    "집콕 생활을 잠시 벗어나 분위기 좋은 일식 전문점에서 부부만의 외식 데이트를 즐기고 있다. 창호는 결의 앞접시에 도톰한 스시를 부지런히 얹어주고, 결은 남편의 다정한 과잉보호를 기분 좋게 받아들이며 즐거운 저녁 시간을 보낸다."
+                ],
+                // 게이트 설정 대폭 수정 (신체강화, 염동력 단검, 아티팩트 드롭 반영)
+                gate: [
+                    "🚨 [주 1회 정기 레이드] 부부가 게이트를 클리어하기 위해 외출했다! 세간에는 도구 없이 맨몸으로 전장을 부수는 S급 신체강화술사로 알려진 창호가 압도적인 피지컬로 크리처들을 박살낸다. 오래전 오른팔을 잃은 결은 강력한 염동력으로 단검 수십 개를 허공에 자유자재로 띄워 조종하며, 독술과 치유 마법으로 창호의 사각지대를 완벽히 보조한다. 보스를 처치하자 마력으로 빛나는 희귀 아티팩트가 랜덤 드롭된다.",
+                    "🚨 [주 1회 정기 레이드] 일주일에 한 번 있는 던전 클리어를 위해 부부가 게이트 내부로 진입했다. 창호는 아내를 자신의 마력 반경 안에 안전하게 두고 S급의 파괴적인 신체강화 타격을 선보인다. 결은 마른 체구와 외팔이라는 제약이 무색하게, 예리한 염동력으로 단검들을 날려 크리처들을 처단하고 독을 퍼뜨려 전장을 지배한다. 클리어 후 획득한 고등급 마도구는 추후 암시장에 판매하거나 연구용으로 저택에 보관할 예정이다."
+                ]
+            },
+
+            // 9. 암시장 루트 수정 (마도구/아티팩트 경매 설정 반영)
+            blackMarket: {
+                changho: "🕵️‍♂️ [주 1회 비밀 행동] 창호가 주 1회 열리는 지하 암시장 경매에 참여하기 위해 홀로 외출했다. 게이트에서 구하기 힘든 최상위 등급의 희귀 마도구와 마력 구동 아티팩트를 낙찰받거나 수집하기 위해 움직이고 있다. 제멋대로라는 세간의 평가와 달리 눈빛이 극도로 차갑고 예리하다.",
+                gyeol: "🏠 창호가 주 1회 다니는 암시장 경매에 간 시간. 결은 거실 소파에 홀로 넓게 누워 가장 좋아하는 일식 회를 배달시켜 먹으며 웹소설을 읽고 있다. 오른팔 대신 염동력으로 스마트폰을 공중에 띄워둔 채 발가락을 까딱인다. 창호가 오늘 경매에서 어떤 신기한 마도구나 아티팩트를 낙찰받아 올지 내심 기대하고 있으나, 얼른 돌아왔으면 하며 계속해서 시간을 확인한다."
             }
         };
 
-        // 시간에 따른 카테고리 분류 함수
-        function getSituation(hour) {
-            if (hour >= 1 && hour < 8) return { key: 'sleeping', label: 'Zzz... 취침 중' };
-            if (hour === 8) return { key: 'dreamTalk', label: '꿈 이야기 나누는 중' };
-            if (hour >= 9 && hour < 12) return { key: 'morning', label: '평화로운 오전' };
-            if (hour >= 12 && hour < 18) return { key: 'afternoon', label: '실내 취미 활동' };
-            if (hour >= 18 && hour < 21) return { key: 'dinner', label: '달콤한 저녁 식사' };
-            if (hour >= 21 && hour < 24) return { key: 'night', label: '아늑한 밤 휴식' };
-            if (hour === 0) return { key: 'readyToSleep', label: '침대 위, 고백의 시간' };
+        // 메인 상황 분기 로직
+        function getSituation(day, hour) {
+            if (hour >= 1 && hour < 8) return { type: 'sleeping', label: 'Zzz... 창호의 방에서 취침 중' };
+            if (hour === 8) return { type: 'dreamTalk', label: '침대 위, 꿈 이야기 나누는 중' };
+            if (hour >= 9 && hour < 12) return { type: 'morning', label: '호화 저택의 평화로운 오전' };
+            if (hour === 0) return { type: 'readyToSleep', label: '침대 위, 달콤한 고백 시간' };
+
+            // 토요일 12pm ~ 18pm: 주 1회 게이트 레이드 고정
+            if (day === 6 && (hour >= 12 && hour < 18)) {
+                return { type: 'shared_gate', label: '🚨 주 1회 정기 게이트 레이드 중' };
+            }
+
+            // 수요일 18pm ~ 21pm: 주 1회 암시장 고정
+            if (day === 3 && (hour >= 18 && hour < 21)) {
+                return { type: 'blackMarket', label: '특수 스케줄 수행 중' };
+            }
+
+            // 오후 외출 확률 분기 (30% 산책)
+            if (hour >= 12 && hour < 18) {
+                const seed = (day * 24) + hour;
+                const pseudoRandom = Math.abs(Math.sin(seed));
+                if (pseudoRandom < 0.3) return { type: 'shared_walk', label: '부부 공동 외출 (산책 중)' };
+                return { type: 'afternoon', label: '거실에서 보내는 나른한 오후' };
+            }
+
+            // 저녁 식사 확률 분기 (30% 일식 외식)
+            if (hour >= 18 && hour < 21) {
+                const seed = (day * 24) + hour;
+                const pseudoRandom = Math.abs(Math.cos(seed));
+                if (pseudoRandom < 0.3) return { type: 'shared_dining', label: '외식 데이트 (일식당)' };
+                return { type: 'dinner', label: '부엌과 식탁, 달콤한 저녁' };
+            }
+
+            if (hour >= 21 && hour < 24) return { type: 'night', label: '아늑하고 달달한 밤 휴식' };
         }
 
-        // 화면 업데이트 핵심 로직
+        // 렌더링 엔진
         function updateCharacters() {
             const now = new Date();
             const currentHour = now.getHours();
-            
+            const currentDay = now.getDay();
+
             document.getElementById('current-time').innerText = now.toTimeString().split(' ')[0];
+            document.getElementById('current-day').innerText = dayNames[currentDay];
 
             const hourString = String(currentHour).padStart(2, '0');
             const timeRangeText = `${hourString}:00 - ${hourString}:59`;
 
-            const situation = getSituation(currentHour);
+            const sit = getSituation(currentDay, currentHour);
+            let txt1 = ""; let txt2 = "";
+            const randIdx = Math.floor(Math.random() * 10); 
 
-            const changhoPool = characterData.changho[situation.key];
-            const gyeolPool = characterData.gyeol[situation.key];
+            if (sit.type === 'sleeping') {
+                txt1 = db.sleeping[randIdx % db.sleeping.length];
+                txt2 = txt1;
+            } 
+            else if (sit.type === 'dreamTalk') {
+                txt1 = db.dreamTalk.changho[randIdx % db.dreamTalk.changho.length]();
+                txt2 = db.dreamTalk.gyeol[randIdx % db.dreamTalk.gyeol.length]();
+            }
+            else if (sit.type === 'morning') {
+                txt1 = db.morning.changho[randIdx % db.morning.changho.length]();
+                txt2 = db.morning.gyeol[randIdx % db.morning.gyeol.length]();
+            }
+            else if (sit.type === 'afternoon') {
+                txt1 = db.afternoon.changho[randIdx % db.afternoon.changho.length]();
+                txt2 = db.afternoon.gyeol[randIdx % db.afternoon.gyeol.length]();
+            }
+            else if (sit.type === 'dinner') {
+                txt1 = db.dinner.changho[randIdx % db.dinner.changho.length]();
+                txt2 = db.dinner.gyeol[randIdx % db.dinner.gyeol.length]();
+            }
+            else if (sit.type === 'night') {
+                txt1 = db.night.changho[randIdx % db.night.changho.length]();
+                txt2 = db.night.gyeol[randIdx % db.night.gyeol.length]();
+            }
+            else if (sit.type === 'readyToSleep') {
+                const item = db.readyToSleep[randIdx % db.readyToSleep.length]();
+                txt1 = item.split(" 결은 ")[0];
+                txt2 = "창호의 방 침대에서 " + item.split(" 결은 ")[1];
+            }
+            else if (sit.type === 'shared_gate') {
+                txt1 = db.shared.gate[randIdx % db.shared.gate.length]; txt2 = txt1;
+            }
+            else if (sit.type === 'shared_walk') {
+                txt1 = db.shared.walk[randIdx % db.shared.walk.length]; txt2 = txt1;
+            }
+            else if (sit.type === 'shared_dining') {
+                txt1 = db.shared.dining[randIdx % db.shared.dining.length]; txt2 = txt1;
+            }
+            else if (sit.type === 'blackMarket') {
+                txt1 = db.blackMarket.changho; txt2 = db.blackMarket.gyeol;
+            }
 
-            let changhoChoice = changhoPool[Math.floor(Math.random() * changhoPool.length)];
-            let gyeolChoice = gyeolPool[Math.floor(Math.random() * gyeolPool.length)];
-
-            const changhoText = (typeof changhoChoice === 'function') ? changhoChoice() : changhoChoice;
-            const gyeolText = (typeof gyeolChoice === 'function') ? gyeolChoice() : gyeolChoice;
-
-            document.getElementById('char1-action').innerText = changhoText;
-            document.getElementById('char1-tag').innerText = situation.label;
+            document.getElementById('char1-action').innerHTML = txt1;
+            document.getElementById('char1-tag').innerText = sit.label;
             document.getElementById('char1-time').innerText = timeRangeText;
 
-            document.getElementById('char2-action').innerText = gyeolText;
-            document.getElementById('char2-tag').innerText = situation.label;
+            document.getElementById('char2-action').innerHTML = txt2;
+            document.getElementById('char2-tag').innerText = sit.label;
             document.getElementById('char2-time').innerText = timeRangeText;
         }
 
         setInterval(() => {
             const now = new Date();
             document.getElementById('current-time').innerText = now.toTimeString().split(' ')[0];
-            
-            if (now.getMinutes() === 0 && now.getSeconds() === 0) {
-                updateCharacters();
-            }
+            if (now.getMinutes() === 0 && now.getSeconds() === 0) updateCharacters();
         }, 1000);
 
         window.onload = () => {
